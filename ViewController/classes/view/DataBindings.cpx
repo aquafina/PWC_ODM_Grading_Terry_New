@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Application xmlns="http://xmlns.oracle.com/adfm/application"
+             version="11.1.1.64.93" id="DataBindings" SeparateXMLFiles="false"
+             Package="view" ClientType="Generic">
+  <pageMap>
+    <page path="/GradingTerry_CreatePG.jspx"
+          usageId="view_GradingTerry_CreatePGPageDef"/>
+    <page path="/Test.jspx" usageId="view_TestPageDef"/>
+    <page path="/SearchGradingTerryPG.jspx"
+          usageId="view_SearchGradingTerryPGPageDef"/>
+    <page path="/GradingTerry_SearchPG.jspx" usageId="view_TestingSearchPGPageDef"/>
+  </pageMap>
+  <pageDefinitionUsages>
+    <page id="view_GradingTerry_CreatePGPageDef"
+          path="view.pageDefs.GradingTerry_CreatePGPageDef"/>
+    <page id="view_TestPageDef" path="view.pageDefs.TestPageDef"/>
+    <page id="view_SearchGradingTerryPGPageDef"
+          path="view.pageDefs.SearchGradingTerryPGPageDef"/>
+    <page id="view_TestingSearchPGPageDef"
+          path="view.pageDefs.TestingSearchPGPageDef"/>
+  </pageDefinitionUsages>
+  <dataControlUsages>
+    <BC4JDataControl id="PwcOdmGradingTerryAMDataControl" Package="model.AM"
+                     FactoryClass="oracle.adf.model.bc4j.DataControlFactoryImpl"
+                     SupportsTransactions="true" SupportsFindMode="true"
+                     SupportsRangesize="true" SupportsResetState="true"
+                     SupportsSortCollection="true"
+                     Configuration="PwcOdmGradingTerryAMLocal"
+                     syncMode="Immediate"
+                     xmlns="http://xmlns.oracle.com/adfm/datacontrol"/>
+    <BC4JDataControl id="PwcOdmGradingWeavingAMDataControl"
+                     Package="model.GradingWeaving.AM"
+                     FactoryClass="oracle.adf.model.bc4j.DataControlFactoryImpl"
+                     SupportsTransactions="true" SupportsFindMode="true"
+                     SupportsRangesize="true" SupportsResetState="true"
+                     SupportsSortCollection="true"
+                     Configuration="PwcOdmGradingWeavingAMLocal"
+                     syncMode="Immediate"
+                     xmlns="http://xmlns.oracle.com/adfm/datacontrol"/>
+  </dataControlUsages>
+</Application>

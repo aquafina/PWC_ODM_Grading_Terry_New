@@ -1,0 +1,112 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:h="http://java.sun.com/jsf/html"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich">
+  <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+  <f:view>
+    <af:document id="d1">
+      <af:messages id="m1"/>
+      <af:form id="f1"></af:form>
+      <af:panelGroupLayout layout="vertical" id="pgl1">
+        <af:form id="form1">
+          <af:panelGroupLayout layout="vertical" id="pgl3">
+            <af:panelHeader text="Grading Terry Search Page" id="ph1"
+                            inlineStyle="height:36px;">
+              <f:facet name="context"/>
+              <f:facet name="menuBar"/>
+              <f:facet name="toolbar"/>
+              <f:facet name="legend"/>
+              <f:facet name="info"/>
+            </af:panelHeader>
+            <af:toolbar id="t1">
+              <af:commandButton actionListener="#{bindings.CreateInsert.execute}"
+                                text="Create"
+                                disabled="#{!bindings.CreateInsert.enabled}"
+                                id="cb2" action="Edit"
+                                inlineStyle="font-size:small;"/>
+              <af:commandButton actionListener="#{bindings.setCurrentRowWithKey.execute}"
+                                text="Edit"
+                                disabled="#{!bindings.setCurrentRowWithKey.enabled}"
+                                id="cb1" action="Edit"
+                                inlineStyle="font-size:small;"/>
+            </af:toolbar>
+            <af:table value="#{bindings.GradingTerryHeadersVO4.collectionModel}"
+                      var="row"
+                      rows="#{bindings.GradingTerryHeadersVO4.rangeSize}"
+                      emptyText="#{bindings.GradingTerryHeadersVO4.viewable ? 'No data to display.' : 'Access Denied.'}"
+                      fetchSize="#{bindings.GradingTerryHeadersVO4.rangeSize}"
+                      rowBandingInterval="0"
+                      filterModel="#{bindings.ImplicitViewCriteriaQuery.queryDescriptor}"
+                      queryListener="#{bindings.ImplicitViewCriteriaQuery.processQuery}"
+                      filterVisible="true" varStatus="vs"
+                      selectedRowKeys="#{bindings.GradingTerryHeadersVO4.collectionModel.selectedRow}"
+                      selectionListener="#{bindings.GradingTerryHeadersVO4.collectionModel.makeCurrent}"
+                      rowSelection="single" id="resId1"
+                      partialTriggers="::cb1 ::cb2 ::cb3" width="1350"
+                      inlineStyle="height:423px;">
+              <af:column sortProperty="#{bindings.GradingTerryHeadersVO4.hints.Job.name}"
+                         filterable="true" sortable="true" headerText="Job"
+                         id="resId1c9" align="center" width="150">
+                <af:outputText value="#{row.Job}" id="ot11"/>
+              </af:column>
+              <af:column sortProperty="#{bindings.GradingTerryHeadersVO4.hints.CustPoNumber.name}"
+                         filterable="true" sortable="true"
+                         headerText="Customer PO Number"
+                         id="resId1c1" align="center" width="150">
+                <af:outputText value="#{row.CustPoNumber}" id="ot6"/>
+              </af:column>
+              <af:column sortProperty="#{bindings.GradingTerryHeadersVO4.hints.SalesOrderNumber.name}"
+                         filterable="true" sortable="true"
+                         headerText="Order Number" id="resId1c15"
+                         align="center" width="150">
+                <af:outputText value="#{row.SalesOrderNumber}" id="ot15"/>
+              </af:column>
+              <af:column sortProperty="#{bindings.GradingTerryHeadersVO4.hints.ItemCode.name}"
+                         filterable="true" sortable="true"
+                         headerText="Item Code"
+                         id="resId1c4" align="center" width="200">
+                <af:outputText value="#{row.ItemCode}" id="ot18"/>
+              </af:column>
+              <af:column sortProperty="#{bindings.GradingTerryHeadersVO4.hints.ItemDescription.name}"
+                         filterable="true" sortable="true"
+                         headerText="Item Description"
+                         id="resId1c5" align="center" width="300">
+                <af:outputText value="#{row.ItemDescription}" id="ot16"/>
+              </af:column>
+              <af:column sortProperty="#{bindings.GradingTerryHeadersVO4.hints.JobQuantity.name}"
+                         filterable="true" sortable="true"
+                         headerText="Job Quantity"
+                         id="resId1c8" align="center">
+                <af:outputText value="#{row.JobQuantity}" id="ot14">
+                  <af:convertNumber groupingUsed="false"
+                                    pattern="#{bindings.GradingTerryHeadersVO4.hints.JobQuantity.format}"/>
+                </af:outputText>
+              </af:column>
+              <af:column sortProperty="#{bindings.GradingTerryHeadersVO4.hints.StitchQuantity.name}"
+                         filterable="true" sortable="true"
+                         headerText="Stitch Quantity" id="resId1c16"
+                         align="center">
+                <af:outputText value="#{row.StitchQuantity}" id="ot10">
+                  <af:convertNumber groupingUsed="false"
+                                    pattern="#{bindings.GradingTerryHeadersVO4.hints.StitchQuantity.format}"/>
+                </af:outputText>
+              </af:column>
+              <af:column sortProperty="#{bindings.GradingTerryHeadersVO4.hints.GdDate.name}"
+                         filterable="true" sortable="true" headerText="Date"
+                         id="resId1c2" align="center">
+                <f:facet name="filter">
+                  <af:inputDate value="#{vs.filterCriteria.GdDate}" id="id1"/>
+                </f:facet>
+                <af:outputText value="#{row.GdDate}" id="ot17">
+                  <af:convertDateTime pattern="#{bindings.GradingTerryHeadersVO4.hints.GdDate.format}"/>
+                </af:outputText>
+              </af:column>
+            </af:table>
+          </af:panelGroupLayout>
+          <af:panelGroupLayout layout="vertical" id="pgl2"/>
+        </af:form>
+      </af:panelGroupLayout>
+    </af:document>
+  </f:view>
+</jsp:root>

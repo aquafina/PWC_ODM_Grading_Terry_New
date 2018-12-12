@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.64.93" id="GradingTerry_CreatePGPageDef"
+                Package="view.pageDefs">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="GradingTerryLinesVO2" RangeSize="25"
+              DataControl="PwcOdmGradingTerryAMDataControl"
+              id="GradingTerryLinesVO2Iterator"/>
+    <iterator Binds="GradingTerryHeadersVO4" RangeSize="25"
+              DataControl="PwcOdmGradingTerryAMDataControl"
+              id="GradingTerryHeadersVO4Iterator"/>
+    <iterator Binds="GradingTerryLinesVO3" RangeSize="25"
+              DataControl="PwcOdmGradingTerryAMDataControl"
+              id="GradingTerryLinesVO3Iterator"/>
+  </executables>
+  <bindings>
+    <methodAction id="callAPIProc"
+                  InstanceName="PwcOdmGradingTerryAMDataControl.dataProvider"
+                  DataControl="PwcOdmGradingTerryAMDataControl"
+                  RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="callAPIProc" IsViewObjectMethod="false"
+                  ReturnName="data.PwcOdmGradingTerryAMDataControl.methodResults.callAPIProc_PwcOdmGradingTerryAMDataControl_dataProvider_callAPIProc_result">
+      <NamedData NDName="sqlReturnType" NDType="int"/>
+      <NamedData NDName="stmt" NDType="java.lang.String"/>
+      <NamedData NDName="requestStatus" NDType="java.lang.String"/>
+    </methodAction>
+    <button IterBinding="GradingTerryLinesVO2Iterator" id="SelectedRow1"
+            DTSupportsMRU="false" StaticList="true">
+      <AttrNames>
+        <Item Value="SelectedRow"/>
+      </AttrNames>
+      <ValueList>
+        <Item Value="Y"/>
+        <Item Value="N"/>
+      </ValueList>
+    </button>
+    <listOfValues StaticList="false"
+                  IterBinding="GradingTerryHeadersVO4Iterator"
+                  Uses="LOV_CustPoNumber" id="CustPoNumber"/>
+    <listOfValues StaticList="false"
+                  IterBinding="GradingTerryHeadersVO4Iterator" Uses="LOV_Job"
+                  id="Job"/>
+    <attributeValues IterBinding="GradingTerryHeadersVO4Iterator" id="GdDate">
+      <AttrNames>
+        <Item Value="GdDate"/>
+      </AttrNames>
+    </attributeValues>
+    <tree IterBinding="GradingTerryLinesVO3Iterator" id="GradingTerryLinesVO3">
+      <nodeDefinition DefName="model.VO.GradingTerryLinesVO"
+                      Name="GradingTerryLinesVO30">
+        <AttrNames>
+          <Item Value="StitchingLineNo"/>
+          <Item Value="TotalQuantity"/>
+          <Item Value="Gradea"/>
+          <Item Value="Gradeb"/>
+          <Item Value="Gradec"/>
+          <Item Value="Rewash"/>
+          <Item Value="Remarks"/>
+          <Item Value="SelectedRow" Binds="SelectedRow2"/>
+          <Item Value="RowSelected" Binds="RowSelected"/>
+          <Item Value="TotalQuantityTransient"/>
+          <Item Value="LineDate"/>
+          <Item Value="RequestStatus"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <button IterBinding="GradingTerryLinesVO3Iterator" id="SelectedRow2"
+            DTSupportsMRU="false" StaticList="true">
+      <AttrNames>
+        <Item Value="SelectedRow"/>
+      </AttrNames>
+      <ValueList>
+        <Item Value="true"/>
+        <Item Value="false"/>
+      </ValueList>
+    </button>
+    <action IterBinding="GradingTerryHeadersVO4Iterator" id="CreateInsert"
+            RequiresUpdateModel="true" Action="createInsertRow"/>
+    <action IterBinding="GradingTerryLinesVO3Iterator" id="CreateInsert1"
+            RequiresUpdateModel="true" Action="createInsertRow"/>
+    <button IterBinding="GradingTerryLinesVO3Iterator" id="RowSelected"
+            DTSupportsMRU="false" StaticList="true">
+      <AttrNames>
+        <Item Value="RowSelected"/>
+      </AttrNames>
+      <ValueList>
+        <Item Value="true"/>
+        <Item Value="false"/>
+      </ValueList>
+    </button>
+    <attributeValues IterBinding="GradingTerryHeadersVO4Iterator" id="ItemCode">
+      <AttrNames>
+        <Item Value="ItemCode"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="GradingTerryHeadersVO4Iterator"
+                     id="ItemDescription">
+      <AttrNames>
+        <Item Value="ItemDescription"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="GradingTerryHeadersVO4Iterator"
+                     id="JobQuantity">
+      <AttrNames>
+        <Item Value="JobQuantity"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="GradingTerryHeadersVO4Iterator"
+                     id="StitchQuantity">
+      <AttrNames>
+        <Item Value="StitchQuantity"/>
+      </AttrNames>
+    </attributeValues>
+    <listOfValues StaticList="false"
+                  IterBinding="GradingTerryHeadersVO4Iterator"
+                  Uses="LOV_SalesOrderNumber" id="SalesOrderNumber"/>
+    <attributeValues IterBinding="GradingTerryHeadersVO4Iterator"
+                     id="SumTotalQuantity">
+      <AttrNames>
+        <Item Value="SumTotalQuantity"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="GradingTerryHeadersVO4Iterator"
+                     id="SumGradeA">
+      <AttrNames>
+        <Item Value="SumGradeA"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="GradingTerryHeadersVO4Iterator"
+                     id="SumGradeB">
+      <AttrNames>
+        <Item Value="SumGradeB"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="GradingTerryHeadersVO4Iterator"
+                     id="SumGradec">
+      <AttrNames>
+        <Item Value="SumGradec"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="GradingTerryHeadersVO4Iterator"
+                     id="SumRewash">
+      <AttrNames>
+        <Item Value="SumRewash"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="GradingTerryHeadersVO4Iterator"
+                     id="Attribute1">
+      <AttrNames>
+        <Item Value="Attribute1"/>
+      </AttrNames>
+    </attributeValues>
+    <action id="Commit" RequiresUpdateModel="true" Action="commitTransaction"
+            DataControl="PwcOdmGradingTerryAMDataControl"/>
+    <action IterBinding="GradingTerryHeadersVO4Iterator" id="ExecuteWithParams"
+            RequiresUpdateModel="true" Action="executeWithParams">
+      <NamedData NDName="p_job_id" NDType="java.lang.String"/>
+      <NamedData NDName="p_cust_po" NDType="java.lang.String"/>
+      <NamedData NDName="p_sales_order" NDType="java.lang.String"/>
+    </action>
+    <action id="Rollback" RequiresUpdateModel="false"
+            Action="rollbackTransaction"
+            DataControl="PwcOdmGradingTerryAMDataControl"/>
+  </bindings>
+</pageDefinition>

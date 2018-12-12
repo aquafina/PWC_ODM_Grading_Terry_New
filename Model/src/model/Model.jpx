@@ -1,0 +1,57 @@
+<?xml version='1.0' encoding='windows-1252' ?>
+<!DOCTYPE JboProject SYSTEM "jbo_03_01.dtd">
+<!---->
+
+<JboProject
+   xmlns="http://xmlns.oracle.com/bc4j"
+   Name="Model"
+   Version="11.1.1.64.93"
+   SeparateXMLFiles="true"
+   PackageName="model">
+   <DesignTime>
+      <Attr Name="_jprName" Value="../../Model.jpr"/>
+      <Attr Name="_appModuleNames0" Value="model.AM.PwcOdmGradingTerryAM"/>
+      <Attr Name="_NamedConnection" Value="Conn1"/>
+      <Attr Name="_jbo.TypeMapEntries" Value="Java"/>
+   </DesignTime>
+   <Containee
+      Name="AM"
+      PackageName="model.AM"
+      ObjectType="JboPackage">
+      <DesignTime>
+         <Attr Name="_AM" Value="true"/>
+      </DesignTime>
+   </Containee>
+   <Containee
+      Name="EO"
+      PackageName="model.EO"
+      ObjectType="JboPackage">
+      <DesignTime>
+         <Attr Name="_EO" Value="true"/>
+      </DesignTime>
+   </Containee>
+   <Containee
+      Name="LOV"
+      PackageName="model.LOV"
+      ObjectType="JboPackage">
+      <DesignTime>
+         <Attr Name="_VO" Value="true"/>
+      </DesignTime>
+   </Containee>
+   <Containee
+      Name="VL"
+      PackageName="model.VL"
+      ObjectType="JboPackage">
+      <DesignTime>
+         <Attr Name="_VL" Value="true"/>
+      </DesignTime>
+   </Containee>
+   <Containee
+      Name="VO"
+      PackageName="model.VO"
+      ObjectType="JboPackage">
+      <DesignTime>
+         <Attr Name="_VO" Value="true"/>
+      </DesignTime>
+   </Containee>
+</JboProject>

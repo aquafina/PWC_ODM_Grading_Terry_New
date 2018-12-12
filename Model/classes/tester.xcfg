@@ -1,0 +1,11 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<BC4JConfig version="11.1" xmlns="http://xmlns.oracle.com/bc4j/configuration">
+   <AppModuleConfigBag ApplicationName="model.AM.PwcOdmGradingTerryAM">
+      <AppModuleConfig name="166767653AF" DBconnection="java:comp/env/jdbc/Conn1DS" ApplicationName="model.AM.PwcOdmGradingTerryAM" DeployPlatform="LOCAL" IsLazyLoadingTrue="true" java.naming.factory.initial="oracle.jbo.common.JboInitialContextFactory" JDBCName="NGDEV" BC4JConfigName="PwcOdmGradingTerryAMLocal" jbo.project="model.Model">
+         <Database jbo.locking.mode="optimistic" jbo.TypeMapEntries="Java" jbo.SQLBuilder="Oracle"/>
+         <Security AppModuleJndiName="model.AM.PwcOdmGradingTerryAM"/>
+         <Tester FullProxyInterfaceName="model.AM.common.PwcOdmGradingTerryAM"/>
+         <Custom LastUsedConfiguration="PwcOdmGradingTerryAMLocal" JDBCDataSource="java:comp/env/jdbc/Conn1DS"/>
+      </AppModuleConfig>
+   </AppModuleConfigBag>
+</BC4JConfig>

@@ -1,0 +1,244 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:h="http://java.sun.com/jsf/html"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich">
+  <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+  <f:view>
+    <af:document id="d1">
+      <af:messages id="m1"/>
+      <af:form id="f1">
+        <af:panelGroupLayout id="pgl1"
+                             inlineStyle="width:858px; height:457px;">
+          <af:panelFormLayout id="pfl1">
+            <af:inputText value="#{bindings.GdId.inputValue}"
+                          label="#{bindings.GdId.hints.label}"
+                          required="#{bindings.GdId.hints.mandatory}"
+                          columns="#{bindings.GdId.hints.displayWidth}"
+                          maximumLength="#{bindings.GdId.hints.precision}"
+                          shortDesc="#{bindings.GdId.hints.tooltip}" id="it5">
+              <f:validator binding="#{bindings.GdId.validator}"/>
+              <af:convertNumber groupingUsed="false"
+                                pattern="#{bindings.GdId.format}"/>
+            </af:inputText>
+            <af:inputListOfValues id="itemCodeId"
+                                  popupTitle="Search and Select: #{bindings.ItemCode.hints.label}"
+                                  value="#{bindings.ItemCode.inputValue}"
+                                  label="#{bindings.ItemCode.hints.label}"
+                                  model="#{bindings.ItemCode.listOfValuesModel}"
+                                  required="#{bindings.ItemCode.hints.mandatory}"
+                                  columns="#{bindings.ItemCode.hints.displayWidth}"
+                                  shortDesc="#{bindings.ItemCode.hints.tooltip}">
+              <f:validator binding="#{bindings.ItemCode.validator}"/>
+            </af:inputListOfValues>
+            <af:inputText value="#{bindings.ItemDescription.inputValue}"
+                          label="#{bindings.ItemDescription.hints.label}"
+                          required="#{bindings.ItemDescription.hints.mandatory}"
+                          columns="#{bindings.ItemDescription.hints.displayWidth}"
+                          maximumLength="#{bindings.ItemDescription.hints.precision}"
+                          shortDesc="#{bindings.ItemDescription.hints.tooltip}"
+                          partialTriggers="itemCodeId jobId" id="it4">
+              <f:validator binding="#{bindings.ItemDescription.validator}"/>
+            </af:inputText>
+            <af:inputDate value="#{bindings.GdDate.inputValue}"
+                          label="#{bindings.GdDate.hints.label}"
+                          required="#{bindings.GdDate.hints.mandatory}"
+                          shortDesc="#{bindings.GdDate.hints.tooltip}" id="id1">
+              <f:validator binding="#{bindings.GdDate.validator}"/>
+              <af:convertDateTime pattern="#{bindings.GdDate.format}"/>
+            </af:inputDate>
+            <af:inputListOfValues id="jobId"
+                                  popupTitle="Search and Select: #{bindings.Job.hints.label}"
+                                  value="#{bindings.Job.inputValue}"
+                                  label="#{bindings.Job.hints.label}"
+                                  model="#{bindings.Job.listOfValuesModel}"
+                                  required="#{bindings.Job.hints.mandatory}"
+                                  columns="#{bindings.Job.hints.displayWidth}"
+                                  shortDesc="#{bindings.Job.hints.tooltip}">
+              <f:validator binding="#{bindings.Job.validator}"/>
+            </af:inputListOfValues>
+            <af:inputText value="#{bindings.JobQuantity.inputValue}"
+                          label="#{bindings.JobQuantity.hints.label}"
+                          required="#{bindings.JobQuantity.hints.mandatory}"
+                          columns="#{bindings.JobQuantity.hints.displayWidth}"
+                          maximumLength="#{bindings.JobQuantity.hints.precision}"
+                          shortDesc="#{bindings.JobQuantity.hints.tooltip}"
+                          partialTriggers="jobId" id="it3">
+              <f:validator binding="#{bindings.JobQuantity.validator}"/>
+              <af:convertNumber groupingUsed="false"
+                                pattern="#{bindings.JobQuantity.format}"/>
+            </af:inputText>
+            <af:inputText value="#{bindings.StitchQuantity.inputValue}"
+                          label="#{bindings.StitchQuantity.hints.label}"
+                          required="#{bindings.StitchQuantity.hints.mandatory}"
+                          columns="#{bindings.StitchQuantity.hints.displayWidth}"
+                          maximumLength="#{bindings.StitchQuantity.hints.precision}"
+                          shortDesc="#{bindings.StitchQuantity.hints.tooltip}"
+                          partialTriggers="jobId" id="it1">
+              <f:validator binding="#{bindings.StitchQuantity.validator}"/>
+              <af:convertNumber groupingUsed="false"
+                                pattern="#{bindings.StitchQuantity.format}"/>
+            </af:inputText>
+            <af:inputListOfValues id="custPoNumberId"
+                                  popupTitle="Search and Select: #{bindings.CustPoNumber.hints.label}"
+                                  value="#{bindings.CustPoNumber.inputValue}"
+                                  label="#{bindings.CustPoNumber.hints.label}"
+                                  model="#{bindings.CustPoNumber.listOfValuesModel}"
+                                  required="#{bindings.CustPoNumber.hints.mandatory}"
+                                  columns="#{bindings.CustPoNumber.hints.displayWidth}"
+                                  shortDesc="#{bindings.CustPoNumber.hints.tooltip}">
+              <f:validator binding="#{bindings.CustPoNumber.validator}"/>
+            </af:inputListOfValues>
+            <af:inputText value="#{bindings.MfgOrgId.inputValue}"
+                          label="#{bindings.MfgOrgId.hints.label}"
+                          required="#{bindings.MfgOrgId.hints.mandatory}"
+                          columns="#{bindings.MfgOrgId.hints.displayWidth}"
+                          maximumLength="#{bindings.MfgOrgId.hints.precision}"
+                          shortDesc="#{bindings.MfgOrgId.hints.tooltip}"
+                          id="it2">
+              <f:validator binding="#{bindings.MfgOrgId.validator}"/>
+              <af:convertNumber groupingUsed="false"
+                                pattern="#{bindings.MfgOrgId.format}"/>
+            </af:inputText>
+            <af:commandButton actionListener="#{bindings.CreateInsert.execute}"
+                              text="CreateInsert"
+                              disabled="#{!bindings.CreateInsert.enabled}"
+                              id="cb1"/>
+            <af:commandButton actionListener="#{bindings.Commit.execute}"
+                              text="Commit"
+                              disabled="#{!bindings.Commit.enabled}" id="cb3"
+                              partialSubmit="true"/>
+          </af:panelFormLayout>
+          <af:commandButton actionListener="#{bindings.CreateInsert2.execute}"
+                            text="CreateInsert2"
+                            id="cb5"/>
+          <af:table value="#{bindings.PwcOdmNGGradingLinesVO1.collectionModel}"
+                    var="row"
+                    rows="#{bindings.PwcOdmNGGradingLinesVO1.rangeSize}"
+                    emptyText="#{bindings.PwcOdmNGGradingLinesVO1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                    fetchSize="#{bindings.PwcOdmNGGradingLinesVO1.rangeSize}"
+                    rowBandingInterval="0" id="t2" partialTriggers="::cb4 ::cb5"
+                    inlineStyle="width:100%;">
+            <af:column sortProperty="#{bindings.PwcOdmNGGradingLinesVO1.hints.SelectedRow.name}"
+                       sortable="false"
+                       headerText="#{bindings.PwcOdmNGGradingLinesVO1.hints.SelectedRow.label}"
+                       id="c15">
+              <af:selectBooleanCheckbox value="#{row.bindings.SelectedRow.inputValue}"
+                                        label="#{row.bindings.SelectedRow.label}"
+                                        shortDesc="#{bindings.PwcOdmNGGradingLinesVO1.hints.SelectedRow.tooltip}"
+                                        id="sbc2"/>
+            </af:column>
+            <af:column sortProperty="#{bindings.PwcOdmNGGradingLinesVO1.hints.StitchingLineNo.name}"
+                       sortable="false"
+                       headerText="#{bindings.PwcOdmNGGradingLinesVO1.hints.StitchingLineNo.label}"
+                       id="c12">
+              <af:inputListOfValues id="inputListOfValues1"
+                                    popupTitle="Search and Select: #{bindings.PwcOdmNGGradingLinesVO1.hints.StitchingLineNo.label}"
+                                    value="#{row.bindings.StitchingLineNo.inputValue}"
+                                    model="#{row.bindings.StitchingLineNo.listOfValuesModel}"
+                                    required="#{bindings.PwcOdmNGGradingLinesVO1.hints.StitchingLineNo.mandatory}"
+                                    columns="#{bindings.PwcOdmNGGradingLinesVO1.hints.StitchingLineNo.displayWidth}"
+                                    shortDesc="#{bindings.PwcOdmNGGradingLinesVO1.hints.StitchingLineNo.tooltip}">
+                <f:validator binding="#{row.bindings.StitchingLineNo.validator}"/>
+              </af:inputListOfValues>
+            </af:column>
+            <af:column sortProperty="#{bindings.PwcOdmNGGradingLinesVO1.hints.TotalQuantity.name}"
+                       sortable="false"
+                       headerText="#{bindings.PwcOdmNGGradingLinesVO1.hints.TotalQuantity.label}"
+                       id="c11">
+              <af:inputText value="#{row.bindings.TotalQuantity.inputValue}"
+                            label="#{bindings.PwcOdmNGGradingLinesVO1.hints.TotalQuantity.label}"
+                            required="#{bindings.PwcOdmNGGradingLinesVO1.hints.TotalQuantity.mandatory}"
+                            columns="#{bindings.PwcOdmNGGradingLinesVO1.hints.TotalQuantity.displayWidth}"
+                            maximumLength="#{bindings.PwcOdmNGGradingLinesVO1.hints.TotalQuantity.precision}"
+                            shortDesc="#{bindings.PwcOdmNGGradingLinesVO1.hints.TotalQuantity.tooltip}"
+                            id="it18">
+                <f:validator binding="#{row.bindings.TotalQuantity.validator}"/>
+                <af:convertNumber groupingUsed="false"
+                                  pattern="#{bindings.PwcOdmNGGradingLinesVO1.hints.TotalQuantity.format}"/>
+              </af:inputText>
+            </af:column>
+            <af:column sortProperty="#{bindings.PwcOdmNGGradingLinesVO1.hints.Gradea.name}"
+                       sortable="false"
+                       headerText="#{bindings.PwcOdmNGGradingLinesVO1.hints.Gradea.label}"
+                       id="c16">
+              <af:inputText value="#{row.bindings.Gradea.inputValue}"
+                            label="#{bindings.PwcOdmNGGradingLinesVO1.hints.Gradea.label}"
+                            required="#{bindings.PwcOdmNGGradingLinesVO1.hints.Gradea.mandatory}"
+                            columns="#{bindings.PwcOdmNGGradingLinesVO1.hints.Gradea.displayWidth}"
+                            maximumLength="#{bindings.PwcOdmNGGradingLinesVO1.hints.Gradea.precision}"
+                            shortDesc="#{bindings.PwcOdmNGGradingLinesVO1.hints.Gradea.tooltip}"
+                            id="it15">
+                <f:validator binding="#{row.bindings.Gradea.validator}"/>
+                <af:convertNumber groupingUsed="false"
+                                  pattern="#{bindings.PwcOdmNGGradingLinesVO1.hints.Gradea.format}"/>
+              </af:inputText>
+            </af:column>
+            <af:column sortProperty="#{bindings.PwcOdmNGGradingLinesVO1.hints.Gradeb.name}"
+                       sortable="false"
+                       headerText="#{bindings.PwcOdmNGGradingLinesVO1.hints.Gradeb.label}"
+                       id="c17">
+              <af:inputText value="#{row.bindings.Gradeb.inputValue}"
+                            label="#{bindings.PwcOdmNGGradingLinesVO1.hints.Gradeb.label}"
+                            required="#{bindings.PwcOdmNGGradingLinesVO1.hints.Gradeb.mandatory}"
+                            columns="#{bindings.PwcOdmNGGradingLinesVO1.hints.Gradeb.displayWidth}"
+                            maximumLength="#{bindings.PwcOdmNGGradingLinesVO1.hints.Gradeb.precision}"
+                            shortDesc="#{bindings.PwcOdmNGGradingLinesVO1.hints.Gradeb.tooltip}"
+                            id="it17">
+                <f:validator binding="#{row.bindings.Gradeb.validator}"/>
+                <af:convertNumber groupingUsed="false"
+                                  pattern="#{bindings.PwcOdmNGGradingLinesVO1.hints.Gradeb.format}"/>
+              </af:inputText>
+            </af:column>
+            <af:column sortProperty="#{bindings.PwcOdmNGGradingLinesVO1.hints.Gradec.name}"
+                       sortable="false"
+                       headerText="#{bindings.PwcOdmNGGradingLinesVO1.hints.Gradec.label}"
+                       id="c10">
+              <af:inputText value="#{row.bindings.Gradec.inputValue}"
+                            label="#{bindings.PwcOdmNGGradingLinesVO1.hints.Gradec.label}"
+                            required="#{bindings.PwcOdmNGGradingLinesVO1.hints.Gradec.mandatory}"
+                            columns="#{bindings.PwcOdmNGGradingLinesVO1.hints.Gradec.displayWidth}"
+                            maximumLength="#{bindings.PwcOdmNGGradingLinesVO1.hints.Gradec.precision}"
+                            shortDesc="#{bindings.PwcOdmNGGradingLinesVO1.hints.Gradec.tooltip}"
+                            id="it19">
+                <f:validator binding="#{row.bindings.Gradec.validator}"/>
+                <af:convertNumber groupingUsed="false"
+                                  pattern="#{bindings.PwcOdmNGGradingLinesVO1.hints.Gradec.format}"/>
+              </af:inputText>
+            </af:column>
+            <af:column sortProperty="#{bindings.PwcOdmNGGradingLinesVO1.hints.Remarks.name}"
+                       sortable="false"
+                       headerText="#{bindings.PwcOdmNGGradingLinesVO1.hints.Remarks.label}"
+                       id="c14">
+              <af:inputText value="#{row.bindings.Remarks.inputValue}"
+                            label="#{bindings.PwcOdmNGGradingLinesVO1.hints.Remarks.label}"
+                            required="#{bindings.PwcOdmNGGradingLinesVO1.hints.Remarks.mandatory}"
+                            columns="#{bindings.PwcOdmNGGradingLinesVO1.hints.Remarks.displayWidth}"
+                            maximumLength="#{bindings.PwcOdmNGGradingLinesVO1.hints.Remarks.precision}"
+                            shortDesc="#{bindings.PwcOdmNGGradingLinesVO1.hints.Remarks.tooltip}"
+                            id="it16">
+                <f:validator binding="#{row.bindings.Remarks.validator}"/>
+              </af:inputText>
+            </af:column>
+            <af:column sortProperty="#{bindings.PwcOdmNGGradingLinesVO1.hints.Rewash.name}"
+                       sortable="false"
+                       headerText="#{bindings.PwcOdmNGGradingLinesVO1.hints.Rewash.label}"
+                       id="c13">
+              <af:inputText value="#{row.bindings.Rewash.inputValue}"
+                            label="#{bindings.PwcOdmNGGradingLinesVO1.hints.Rewash.label}"
+                            required="#{bindings.PwcOdmNGGradingLinesVO1.hints.Rewash.mandatory}"
+                            columns="#{bindings.PwcOdmNGGradingLinesVO1.hints.Rewash.displayWidth}"
+                            maximumLength="#{bindings.PwcOdmNGGradingLinesVO1.hints.Rewash.precision}"
+                            shortDesc="#{bindings.PwcOdmNGGradingLinesVO1.hints.Rewash.tooltip}"
+                            id="it14">
+                <f:validator binding="#{row.bindings.Rewash.validator}"/>
+                <af:convertNumber groupingUsed="false"
+                                  pattern="#{bindings.PwcOdmNGGradingLinesVO1.hints.Rewash.format}"/>
+              </af:inputText>
+            </af:column>
+          </af:table>
+        </af:panelGroupLayout>
+      </af:form>
+    </af:document>
+  </f:view>
+</jsp:root>

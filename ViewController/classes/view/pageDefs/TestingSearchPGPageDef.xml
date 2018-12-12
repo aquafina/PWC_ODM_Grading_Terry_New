@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.64.93" id="TestingSearchPGPageDef"
+                Package="view.pageDefs">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="GradingTerryHeadersVO4" RangeSize="25"
+              DataControl="PwcOdmGradingTerryAMDataControl"
+              id="GradingTerryHeadersVO4Iterator"/>
+    <searchRegion Criteria="__ImplicitViewCriteria__"
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  Binds="GradingTerryHeadersVO4Iterator"
+                  id="ImplicitViewCriteriaQuery"/>
+    <invokeAction id="setSessionValuesAction" Binds="setSessionValues"
+                  Refresh="always"/>
+  </executables>
+  <bindings>
+    <action IterBinding="GradingTerryHeadersVO4Iterator"
+            id="setCurrentRowWithKey" RequiresUpdateModel="false"
+            Action="setCurrentRowWithKey">
+      <NamedData NDName="rowKey" NDType="java.lang.String"/>
+    </action>
+    <action IterBinding="GradingTerryHeadersVO4Iterator" id="CreateInsert"
+            RequiresUpdateModel="true" Action="createInsertRow"/>
+    <tree IterBinding="GradingTerryHeadersVO4Iterator"
+          id="GradingTerryHeadersVO4">
+      <nodeDefinition DefName="model.VO.GradingTerryHeadersVO"
+                      Name="GradingTerryHeadersVO40">
+        <AttrNames>
+          <Item Value="CustPoNumber"/>
+          <Item Value="GdDate"/>
+          <Item Value="GdId"/>
+          <Item Value="ItemCode"/>
+          <Item Value="ItemDescription"/>
+          <Item Value="ItemId"/>
+          <Item Value="JobId"/>
+          <Item Value="JobQuantity"/>
+          <Item Value="Job"/>
+          <Item Value="LastUpdatedBy"/>
+          <Item Value="LastUpdatedDate"/>
+          <Item Value="LastUpdatedLogin"/>
+          <Item Value="MfgOrgId"/>
+          <Item Value="OrgId"/>
+          <Item Value="SalesOrderNumber"/>
+          <Item Value="StitchQuantity"/>
+          <Item Value="JobSearch1"/>
+          <Item Value="SumTotalQuantity"/>
+          <Item Value="SumGradeA"/>
+          <Item Value="SumGradeB"/>
+          <Item Value="SumGradec"/>
+          <Item Value="SumRewash"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="setSessionValues"
+                  InstanceName="PwcOdmGradingTerryAMDataControl.dataProvider"
+                  DataControl="PwcOdmGradingTerryAMDataControl"
+                  RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="setSessionValues" IsViewObjectMethod="false">
+      <NamedData NDName="orgId" NDType="java.lang.String"/>
+      <NamedData NDName="userId" NDValue="#{viewScope.UserId}"
+                 NDType="java.lang.String"/>
+      <NamedData NDName="respId" NDValue="#{viewScope.RespId}"
+                 NDType="java.lang.String"/>
+      <NamedData NDName="respAppl" NDValue="#{viewScope.RespApplId}"
+                 NDType="java.lang.String"/>
+      <NamedData NDName="mfgOrgId" NDValue="#{viewScope.OrgId}"
+                 NDType="java.lang.String"/>
+    </methodAction>
+  </bindings>
+</pageDefinition>

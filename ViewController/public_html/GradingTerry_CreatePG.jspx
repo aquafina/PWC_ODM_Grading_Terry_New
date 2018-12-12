@@ -1,0 +1,390 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:h="http://java.sun.com/jsf/html"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich">
+  <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+  <f:view>
+    <af:document id="d1">
+      <af:messages id="m1"/>
+      <af:form id="f1" styleClass="width:100%;">
+        <af:panelGroupLayout id="pgl1" styleClass="width:100%;">
+          <af:panelHeader text="Create / Edit Grading Terry" id="ph1">
+            <f:facet name="context"/>
+            <f:facet name="menuBar"/>
+            <f:facet name="toolbar"/>
+            <f:facet name="legend"/>
+            <f:facet name="info"/>
+            <af:panelFormLayout id="pfl1" maxColumns="2" rows="4"
+                                binding="#{backingBeanScope.PwcGradingTerryBean.headerForm}">
+              <af:inputListOfValues id="custPoNumberId"
+                                    popupTitle="Search and Select: #{bindings.CustPoNumber.hints.label}"
+                                    value="#{bindings.CustPoNumber.inputValue}"
+                                    label="Customer PO Number"
+                                    model="#{bindings.CustPoNumber.listOfValuesModel}"
+                                    required="#{bindings.CustPoNumber.hints.mandatory}"
+                                    columns="#{bindings.CustPoNumber.hints.displayWidth}"
+                                    shortDesc="#{bindings.CustPoNumber.hints.tooltip}"
+                                    partialTriggers="jobId cb2 cb6" autoSubmit="true"
+                                    disabled="#{bindings.Attribute1.inputValue=='S'}">
+                <f:validator binding="#{bindings.CustPoNumber.validator}"/>
+              </af:inputListOfValues>
+              <af:inputListOfValues id="salesOrderNumberId"
+                                    popupTitle="Search and Select: #{bindings.SalesOrderNumber.hints.label}"
+                                    value="#{bindings.SalesOrderNumber.inputValue}"
+                                    label="Sales Order Number"
+                                    model="#{bindings.SalesOrderNumber.listOfValuesModel}"
+                                    required="#{bindings.SalesOrderNumber.hints.mandatory}"
+                                    columns="#{bindings.SalesOrderNumber.hints.displayWidth}"
+                                    shortDesc="#{bindings.SalesOrderNumber.hints.tooltip}"
+                                    partialTriggers="jobId cb2 cb6" autoSubmit="true"
+                                    disabled="#{bindings.Attribute1.inputValue=='S'}">
+                <f:validator binding="#{bindings.SalesOrderNumber.validator}"/>
+              </af:inputListOfValues>
+              <af:panelLabelAndMessage label="Item Code"
+                                       id="plam1">
+                <af:outputText value="#{bindings.ItemCode.inputValue}"
+                               id="ot2" partialTriggers="jobId"/>
+              </af:panelLabelAndMessage>
+              <af:panelLabelAndMessage label="Item Description"
+                                       id="plam2">
+                <af:outputText value="#{bindings.ItemDescription.inputValue}"
+                               id="ot3" partialTriggers="jobId"/>
+              </af:panelLabelAndMessage>
+              <af:inputListOfValues id="jobId"
+                                    popupTitle="Search and Select: #{bindings.Job.hints.label}"
+                                    value="#{bindings.Job.inputValue}"
+                                    label="Job"
+                                    model="#{bindings.Job.listOfValuesModel}"
+                                    columns="#{bindings.Job.hints.displayWidth}"
+                                    shortDesc="#{bindings.Job.hints.tooltip}"
+                                    showRequired="true" required="true"
+                                    autoSubmit="true"
+                                    launchPopupListener="#{backingBeanScope.PwcGradingTerryBean.jobLovLaunchPopupListener}"
+                                    returnPopupListener="#{backingBeanScope.PwcGradingTerryBean.returnJobLovPopupListener}"
+                                    disabled="#{bindings.Attribute1.inputValue=='S'}"
+                                    partialTriggers="cb2 cb6">
+                <f:validator binding="#{bindings.Job.validator}"/>
+              </af:inputListOfValues>
+              <af:panelLabelAndMessage label="Stitching Quantity"
+                                       id="plam4">
+                <af:outputText value="#{bindings.StitchQuantity.inputValue}"
+                               id="ot5" partialTriggers="jobId">
+                  <af:convertNumber groupingUsed="false"
+                                    pattern="#{bindings.StitchQuantity.format}"/>
+                </af:outputText>
+              </af:panelLabelAndMessage>
+              <af:panelLabelAndMessage label="Job Quantity" id="plam3">
+                <af:outputText value="#{bindings.JobQuantity.inputValue}"
+                               id="ot4" partialTriggers="jobId">
+                  <af:convertNumber groupingUsed="false"
+                                    pattern="#{bindings.JobQuantity.format}"/>
+                </af:outputText>
+              </af:panelLabelAndMessage>
+              <af:inputDate value="#{bindings.GdDate.inputValue}"
+                            label="Date"
+                            required="#{bindings.GdDate.hints.mandatory}"
+                            shortDesc="#{bindings.GdDate.hints.tooltip}"
+                            id="id1"
+                            disabled="#{bindings.Attribute1.inputValue=='S'}"
+                            partialTriggers="cb2 cb6">
+                <f:validator binding="#{bindings.GdDate.validator}"/>
+                <af:convertDateTime pattern="#{bindings.GdDate.format}"/>
+              </af:inputDate>
+              <af:toolbar id="t4">
+                <af:commandButton
+                                  text="New"
+                                  disabled="#{!bindings.CreateInsert.enabled}"
+                                  id="cb1"
+                                  actionListener="#{backingBeanScope.PwcGradingTerryBean.createInsertHeaderAction}"
+                                  inlineStyle="font-size:small;"/>
+                <af:commandButton actionListener="#{bindings.Commit.execute}"
+                                  text="Commit"
+                                  disabled="#{!bindings.Commit.enabled}"
+                                  id="cb9" rendered="false"/>
+                <af:commandButton
+                                  text="Save"
+                                  id="cb2" partialSubmit="true"
+                                  actionListener="#{backingBeanScope.PwcGradingTerryBean.saveChanges}"
+                                  inlineStyle="font-size:small;"/>
+                <af:commandButton actionListener="#{bindings.Rollback.execute}"
+                                  text="Rollback"
+                                  disabled="#{!bindings.Rollback.enabled}"
+                                  immediate="true" id="cb10" rendered="false">
+                  <af:resetActionListener/>
+                </af:commandButton>
+                <af:commandButton text="Delete" id="cb3"
+                                  actionListener="#{backingBeanScope.PwcGradingTerryBean.deleteHeaderRow}"
+                                  rendered="false"/>
+              </af:toolbar>
+              <af:commandButton actionListener="#{bindings.ExecuteWithParams.execute}"
+                                text="ExecuteWithParams"
+                                disabled="#{!bindings.ExecuteWithParams.enabled}"
+                                id="cb11" rendered="false"/>
+              <af:inputText value="#{bindings.Attribute1.inputValue}"
+                            simple="true"
+                            required="#{bindings.Attribute1.hints.mandatory}"
+                            columns="#{bindings.Attribute1.hints.displayWidth}"
+                            maximumLength="#{bindings.Attribute1.hints.precision}"
+                            shortDesc="#{bindings.Attribute1.hints.tooltip}"
+                            id="it3" rendered="false">
+                <f:validator binding="#{bindings.Attribute1.validator}"/>
+              </af:inputText>
+            </af:panelFormLayout>
+          </af:panelHeader>
+          <af:separator id="s2" inlineStyle="height:18px;"/>
+          <af:panelGroupLayout id="pgl2" inlineStyle="width:100%;">
+            <af:toolbar id="t3">
+              <af:commandButton actionListener="#{bindings.CreateInsert1.execute}"
+                                text="Insert"
+                                disabled="#{!bindings.CreateInsert1.enabled}"
+                                id="cb4" partialSubmit="true"
+                                inlineStyle="font-size:small;"/>
+              <af:commandButton text="Delete" id="cb5"
+                                actionListener="#{backingBeanScope.PwcGradingTerryBean.deleteSelectedRows}"
+                                partialSubmit="true"
+                                inlineStyle="font-size:small;"/>
+              <af:commandButton text="Complete" id="cb6"
+                                actionListener="#{backingBeanScope.PwcGradingTerryBean.completeJobAPIActionListener}"
+                                partialSubmit="true"
+                                inlineStyle="font-size:small;"/>
+              <af:commandButton text="Return" id="cb7"
+                                actionListener="#{backingBeanScope.PwcGradingTerryBean.returnJobAPIActionListener}"
+                                partialSubmit="true"
+                                inlineStyle="font-size:small;"/>
+              <af:commandButton actionListener="#{backingBeanScope.PwcGradingTerryBean.backAction}"
+                                text="Back"
+                                immediate="true" id="cb8" action="Search"
+                                inlineStyle="font-size:small;">
+                <af:resetActionListener/>
+              </af:commandButton>
+            </af:toolbar>
+            <af:table value="#{bindings.GradingTerryLinesVO3.collectionModel}"
+                      var="row"
+                      rows="#{bindings.GradingTerryLinesVO3.rangeSize}"
+                      emptyText="#{bindings.GradingTerryLinesVO3.viewable ? 'No data to display.' : 'Access Denied.'}"
+                      fetchSize="#{bindings.GradingTerryLinesVO3.rangeSize}"
+                      rowBandingInterval="0"
+                      selectionListener="#{bindings.GradingTerryLinesVO3.collectionModel.makeCurrent}"
+                      rowSelection="multiple" id="t1" width="1200"
+                      varStatus="vs"
+                      partialTriggers="::cb4 ::cb5 ::cb6 ::cb7 ::cb8 ::cb2"
+                      binding="#{backingBeanScope.PwcGradingTerryBean.gradingLinesTable}">
+              <af:column id="c10" width="40" align="center">
+                <af:selectBooleanCheckbox value="#{row.bindings.RowSelected.inputValue}"
+                                          label="#{row.bindings.RowSelected.label}"
+                                          shortDesc="#{bindings.GradingTerryLinesVO3.hints.RowSelected.tooltip}"
+                                          id="sbc1"/>
+                <f:facet name="footer">
+                  <af:outputText value="Total" id="ot7"
+                                 inlineStyle="font-weight:bold;"/>
+                </f:facet>
+              </af:column>
+              <af:column id="c9" headerText="Sr No" align="center" width="80">
+                <af:outputText value="#{vs.index+1}" id="ot1"/>
+              </af:column>
+              <af:column sortProperty="#{bindings.GradingTerryLinesVO3.hints.StitchingLineNo.name}"
+                         sortable="false"
+                         headerText="Stitching Line No"
+                         id="c1" align="center" width="150">
+                <af:inputListOfValues id="stitchingLineNoId"
+                                      popupTitle="Search and Select: #{bindings.GradingTerryLinesVO3.hints.StitchingLineNo.label}"
+                                      value="#{row.bindings.StitchingLineNo.inputValue}"
+                                      model="#{row.bindings.StitchingLineNo.listOfValuesModel}"
+                                      required="#{bindings.GradingTerryLinesVO3.hints.StitchingLineNo.mandatory}"
+                                      columns="#{bindings.GradingTerryLinesVO3.hints.StitchingLineNo.displayWidth}"
+                                      shortDesc="#{bindings.GradingTerryLinesVO3.hints.StitchingLineNo.tooltip}"
+                                      autoSubmit="true"
+                                      disabled="#{row.bindings.RequestStatus.inputValue=='S'}">
+                  <f:validator binding="#{row.bindings.StitchingLineNo.validator}"/>
+                </af:inputListOfValues>
+              </af:column>
+              <af:column sortProperty="#{bindings.GradingTerryLinesVO3.hints.TotalQuantity.name}"
+                         sortable="false"
+                         headerText="Total Quantity"
+                         id="c3" align="center" width="100">
+                <f:facet name="footer">
+                  <af:outputText value="#{bindings.SumTotalQuantity.inputValue}" id="ot8"
+                                 inlineStyle="font-weight:bold;"
+                                 partialTriggers="it6 it5 it7 it10 it1"/>
+                </f:facet>
+                <af:inputText
+                              required="#{bindings.GradingTerryLinesVO3.hints.TotalQuantityTransient.mandatory}"
+                              columns="#{bindings.GradingTerryLinesVO3.hints.TotalQuantityTransient.displayWidth}"
+                              maximumLength="#{bindings.GradingTerryLinesVO3.hints.TotalQuantityTransient.precision}"
+                              shortDesc="#{bindings.GradingTerryLinesVO3.hints.TotalQuantityTransient.tooltip}"
+                              id="it1" disabled="true"
+                              partialTriggers="it6 it5 it7 it10"
+                              value="#{row.bindings.TotalQuantityTransient.inputValue}"
+                              autoSubmit="true">
+                  <f:validator binding="#{row.bindings.TotalQuantityTransient.validator}"/>
+                  <af:convertNumber groupingUsed="false"
+                                    pattern="#{bindings.GradingTerryLinesVO3.hints.TotalQuantityTransient.format}"/>
+                </af:inputText>
+              </af:column>
+              <af:column sortProperty="#{bindings.GradingTerryLinesVO3.hints.Gradea.name}"
+                         sortable="false"
+                         headerText="Grade A"
+                         id="c7" align="center" width="100">
+                <af:inputText value="#{row.bindings.Gradea.inputValue}"
+                              label="#{bindings.GradingTerryLinesVO3.hints.Gradea.label}"
+                              required="#{bindings.GradingTerryLinesVO3.hints.Gradea.mandatory}"
+                              columns="#{bindings.GradingTerryLinesVO3.hints.Gradea.displayWidth}"
+                              maximumLength="#{bindings.GradingTerryLinesVO3.hints.Gradea.precision}"
+                              shortDesc="#{bindings.GradingTerryLinesVO3.hints.Gradea.tooltip}"
+                              id="it6"
+                              binding="#{backingBeanScope.PwcGradingTerryBean.gradeAQty}"
+                              autoSubmit="true"
+                              disabled="#{row.bindings.RequestStatus.inputValue=='S'}"
+                              partialTriggers="::cb6"
+                              valueChangeListener="#{backingBeanScope.PwcGradingTerryBean.gradeAValueChangeListener}">
+                  <f:validator binding="#{row.bindings.Gradea.validator}"/>
+                  <af:convertNumber groupingUsed="false"
+                                    pattern="#{bindings.GradingTerryLinesVO3.hints.Gradea.format}"/>
+                </af:inputText>
+                <f:facet name="footer">
+                  <af:outputText value="#{bindings.SumGradeA.inputValue}" id="ot9"
+                                 inlineStyle="font-weight:bold;"
+                                 partialTriggers="it6"/>
+                </f:facet>
+              </af:column>
+              <af:column sortProperty="#{bindings.GradingTerryLinesVO3.hints.Gradeb.name}"
+                         sortable="false"
+                         headerText="Grade B"
+                         id="c8" align="center" width="100">
+                <af:inputText value="#{row.bindings.Gradeb.inputValue}"
+                              label="#{bindings.GradingTerryLinesVO3.hints.Gradeb.label}"
+                              required="#{bindings.GradingTerryLinesVO3.hints.Gradeb.mandatory}"
+                              columns="#{bindings.GradingTerryLinesVO3.hints.Gradeb.displayWidth}"
+                              maximumLength="#{bindings.GradingTerryLinesVO3.hints.Gradeb.precision}"
+                              shortDesc="#{bindings.GradingTerryLinesVO3.hints.Gradeb.tooltip}"
+                              id="it5"
+                              binding="#{backingBeanScope.PwcGradingTerryBean.gradeBQty}"
+                              autoSubmit="true"
+                              disabled="#{row.bindings.RequestStatus.inputValue=='S'}"
+                              partialTriggers="::cb6"
+                              valueChangeListener="#{backingBeanScope.PwcGradingTerryBean.gradeBValueChangeListener}">
+                  <f:validator binding="#{row.bindings.Gradeb.validator}"/>
+                  <af:convertNumber groupingUsed="false"
+                                    pattern="#{bindings.GradingTerryLinesVO3.hints.Gradeb.format}"/>
+                </af:inputText>
+                <f:facet name="footer">
+                  <af:outputText value="#{bindings.SumGradeB.inputValue}" id="ot10"
+                                 inlineStyle="font-weight:bold;"
+                                 partialTriggers="it5"/>
+                </f:facet>
+              </af:column>
+              <af:column sortProperty="#{bindings.GradingTerryLinesVO3.hints.Gradec.name}"
+                         sortable="false"
+                         headerText="Grade C"
+                         id="c4" align="center" width="100">
+                <af:inputText value="#{row.bindings.Gradec.inputValue}"
+                              label="#{bindings.GradingTerryLinesVO3.hints.Gradec.label}"
+                              required="#{bindings.GradingTerryLinesVO3.hints.Gradec.mandatory}"
+                              columns="#{bindings.GradingTerryLinesVO3.hints.Gradec.displayWidth}"
+                              maximumLength="#{bindings.GradingTerryLinesVO3.hints.Gradec.precision}"
+                              shortDesc="#{bindings.GradingTerryLinesVO3.hints.Gradec.tooltip}"
+                              id="it7"
+                              binding="#{backingBeanScope.PwcGradingTerryBean.gradeCQty}"
+                              autoSubmit="true"
+                              disabled="#{row.bindings.RequestStatus.inputValue=='S'}"
+                              partialTriggers="::cb6"
+                              valueChangeListener="#{backingBeanScope.PwcGradingTerryBean.gradeCValueChangeListener}">
+                  <f:validator binding="#{row.bindings.Gradec.validator}"/>
+                  <af:convertNumber groupingUsed="false"
+                                    pattern="#{bindings.GradingTerryLinesVO3.hints.Gradec.format}"/>
+                </af:inputText>
+                <f:facet name="footer">
+                  <af:outputText value="#{bindings.SumGradec.inputValue}" id="ot11"
+                                 inlineStyle="font-weight:bold;"
+                                 partialTriggers="it7"/>
+                </f:facet>
+              </af:column>
+              <af:column sortProperty="#{bindings.GradingTerryLinesVO3.hints.Rewash.name}"
+                         sortable="false"
+                         headerText="#{bindings.GradingTerryLinesVO3.hints.Rewash.label}"
+                         id="c2" align="center" width="100">
+                <af:inputText value="#{row.bindings.Rewash.inputValue}"
+                              label="#{bindings.GradingTerryLinesVO3.hints.Rewash.label}"
+                              required="#{bindings.GradingTerryLinesVO3.hints.Rewash.mandatory}"
+                              columns="#{bindings.GradingTerryLinesVO3.hints.Rewash.displayWidth}"
+                              maximumLength="#{bindings.GradingTerryLinesVO3.hints.Rewash.precision}"
+                              shortDesc="#{bindings.GradingTerryLinesVO3.hints.Rewash.tooltip}"
+                              id="it10"
+                              binding="#{backingBeanScope.PwcGradingTerryBean.rewashQty}"
+                              autoSubmit="true"
+                              disabled="#{row.bindings.RequestStatus.inputValue=='S'}"
+                              partialTriggers="::cb6"
+                              valueChangeListener="#{backingBeanScope.PwcGradingTerryBean.rewashValueChangeListener}">
+                  <f:validator binding="#{row.bindings.Rewash.validator}"/>
+                  <af:convertNumber groupingUsed="false"
+                                    pattern="#{bindings.GradingTerryLinesVO3.hints.Rewash.format}"/>
+                </af:inputText>
+                <f:facet name="footer">
+                  <af:outputText value="#{bindings.SumRewash.inputValue}" id="ot12"
+                                 inlineStyle="font-weight:bold;"
+                                 partialTriggers="it10"/>
+                </f:facet>
+              </af:column>
+              <af:column sortProperty="#{bindings.GradingTerryLinesVO3.hints.Remarks.name}"
+                         sortable="false"
+                         headerText="#{bindings.GradingTerryLinesVO3.hints.Remarks.label}"
+                         id="c6" align="center" width="200">
+                <af:inputText value="#{row.bindings.Remarks.inputValue}"
+                              label="#{bindings.GradingTerryLinesVO3.hints.Remarks.label}"
+                              required="#{bindings.GradingTerryLinesVO3.hints.Remarks.mandatory}"
+                              columns="#{bindings.GradingTerryLinesVO3.hints.Remarks.displayWidth}"
+                              maximumLength="#{bindings.GradingTerryLinesVO3.hints.Remarks.precision}"
+                              shortDesc="#{bindings.GradingTerryLinesVO3.hints.Remarks.tooltip}"
+                              id="it9"
+                              disabled="#{row.bindings.RequestStatus.inputValue=='S'}"
+                              partialTriggers="::cb6">
+                  <f:validator binding="#{row.bindings.Remarks.validator}"/>
+                </af:inputText>
+              </af:column>
+              <af:column sortProperty="#{bindings.GradingTerryLinesVO3.hints.LineDate.name}"
+                         sortable="false"
+                         headerText="Date"
+                         id="c5" align="center" width="120">
+                <af:inputDate value="#{row.bindings.LineDate.inputValue}"
+                              required="#{bindings.GradingTerryLinesVO3.hints.LineDate.mandatory}"
+                              shortDesc="#{bindings.GradingTerryLinesVO3.hints.LineDate.tooltip}"
+                              id="id2"
+                              disabled="#{row.bindings.RequestStatus.inputValue=='S'}"
+                              partialTriggers="::cb6">
+                  <f:validator binding="#{row.bindings.LineDate.validator}"/>
+                  <af:convertDateTime pattern="#{bindings.GradingTerryLinesVO3.hints.LineDate.format}"/>
+                </af:inputDate>
+              </af:column>
+              <af:column headerText="#{bindings.GradingTerryLinesVO3.hints.RequestStatus.label}"
+                         id="c11" rendered="false">
+                <af:inputText value="#{row.bindings.RequestStatus.inputValue}"
+                              label="#{bindings.GradingTerryLinesVO3.hints.RequestStatus.label}"
+                              required="#{bindings.GradingTerryLinesVO3.hints.RequestStatus.mandatory}"
+                              columns="#{bindings.GradingTerryLinesVO3.hints.RequestStatus.displayWidth}"
+                              maximumLength="#{bindings.GradingTerryLinesVO3.hints.RequestStatus.precision}"
+                              shortDesc="#{bindings.GradingTerryLinesVO3.hints.RequestStatus.tooltip}"
+                              id="it2">
+                  <f:validator binding="#{row.bindings.RequestStatus.validator}"/>
+                </af:inputText>
+              </af:column>
+            </af:table>
+            <af:popup id="p1"
+                      binding="#{backingBeanScope.PwcGradingTerryBean.completeJobPopup}">
+              <af:dialog id="d2" type="yesNo"
+                         title="Are you sure you want to complete the Job?"
+                         dialogListener="#{backingBeanScope.PwcGradingTerryBean.completeJobDialogListener}"/>
+            </af:popup>
+            <af:popup id="p2"
+                      binding="#{backingBeanScope.PwcGradingTerryBean.returnJobPopup}">
+              <af:dialog id="d3"
+                         title="Are you sure you want to Return selected transactions?"
+                         dialogListener="#{backingBeanScope.PwcGradingTerryBean.returnJobDialogListener}"
+                         type="yesNo"/>
+            </af:popup>
+          </af:panelGroupLayout>
+        </af:panelGroupLayout>
+      </af:form>
+    </af:document>
+  </f:view>
+</jsp:root>

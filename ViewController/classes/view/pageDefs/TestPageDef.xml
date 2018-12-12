@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.64.93" id="TestPageDef" Package="view.pageDefs">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="PwcOdmNGGradingHeadersVO2" RangeSize="25"
+              DataControl="PwcOdmGradingTerryAMDataControl"
+              id="PwcOdmNGGradingHeadersVO2Iterator"/>
+    <iterator Binds="PwcOdmNGGradingLinesVO2" RangeSize="25"
+              DataControl="PwcOdmGradingTerryAMDataControl"
+              id="PwcOdmNGGradingLinesVO2Iterator"/>
+    <iterator Binds="PwcOdmNGGradingLinesVO1" RangeSize="25"
+              DataControl="PwcOdmGradingTerryAMDataControl"
+              id="PwcOdmNGGradingLinesVO1Iterator"/>
+  </executables>
+  <bindings>
+    <listOfValues StaticList="false"
+                  IterBinding="PwcOdmNGGradingHeadersVO2Iterator"
+                  Uses="LOV_ItemCode" id="ItemCode"/>
+    <listOfValues StaticList="false"
+                  IterBinding="PwcOdmNGGradingHeadersVO2Iterator" Uses="LOV_Job"
+                  id="Job"/>
+    <attributeValues IterBinding="PwcOdmNGGradingHeadersVO2Iterator" id="GdId">
+      <AttrNames>
+        <Item Value="GdId"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="PwcOdmNGGradingHeadersVO2Iterator"
+                     id="ItemDescription">
+      <AttrNames>
+        <Item Value="ItemDescription"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="PwcOdmNGGradingHeadersVO2Iterator"
+                     id="GdDate">
+      <AttrNames>
+        <Item Value="GdDate"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="PwcOdmNGGradingHeadersVO2Iterator"
+                     id="JobQuantity">
+      <AttrNames>
+        <Item Value="JobQuantity"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="PwcOdmNGGradingHeadersVO2Iterator"
+                     id="StitchQuantity">
+      <AttrNames>
+        <Item Value="StitchQuantity"/>
+      </AttrNames>
+    </attributeValues>
+    <listOfValues StaticList="false"
+                  IterBinding="PwcOdmNGGradingHeadersVO2Iterator"
+                  Uses="LOV_CustPoNumber" id="CustPoNumber"/>
+    <attributeValues IterBinding="PwcOdmNGGradingHeadersVO2Iterator"
+                     id="MfgOrgId">
+      <AttrNames>
+        <Item Value="MfgOrgId"/>
+      </AttrNames>
+    </attributeValues>
+    <action IterBinding="PwcOdmNGGradingHeadersVO2Iterator" id="CreateInsert"
+            RequiresUpdateModel="true" Action="createInsertRow"/>
+    <action id="Commit" RequiresUpdateModel="true" Action="commitTransaction"
+            DataControl="PwcOdmGradingTerryAMDataControl"/>
+    <button IterBinding="PwcOdmNGGradingLinesVO2Iterator" id="SelectedRow"
+            DTSupportsMRU="false" StaticList="true">
+      <AttrNames>
+        <Item Value="SelectedRow"/>
+      </AttrNames>
+      <ValueList>
+        <Item Value="Y"/>
+        <Item Value="N"/>
+      </ValueList>
+    </button>
+    <tree IterBinding="PwcOdmNGGradingLinesVO1Iterator"
+          id="PwcOdmNGGradingLinesVO1">
+      <nodeDefinition DefName="model.VO.PwcOdmNGGradingLinesVO"
+                      Name="PwcOdmNGGradingLinesVO10">
+        <AttrNames>
+          <Item Value="StitchingLineNo"/>
+          <Item Value="TotalQuantity"/>
+          <Item Value="Gradea"/>
+          <Item Value="Gradeb"/>
+          <Item Value="Gradec"/>
+          <Item Value="Remarks"/>
+          <Item Value="Rewash"/>
+          <Item Value="SelectedRow" Binds="SelectedRow1"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <button IterBinding="PwcOdmNGGradingLinesVO1Iterator" id="SelectedRow1"
+            DTSupportsMRU="false" StaticList="true">
+      <AttrNames>
+        <Item Value="SelectedRow"/>
+      </AttrNames>
+      <ValueList>
+        <Item Value="Y"/>
+        <Item Value="N"/>
+      </ValueList>
+    </button>
+    <action IterBinding="PwcOdmNGGradingLinesVO1Iterator" id="CreateInsert2"
+            RequiresUpdateModel="true" Action="createInsertRow"/>
+  </bindings>
+</pageDefinition>

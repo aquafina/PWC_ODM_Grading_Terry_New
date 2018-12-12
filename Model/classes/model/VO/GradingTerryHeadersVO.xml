@@ -1,0 +1,625 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewObject
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="GradingTerryHeadersVO"
+  Version="11.1.1.64.93"
+  InheritPersonalization="true"
+  BindingStyle="OracleName"
+  CustomQuery="true"
+  PageIterMode="Full"
+  UseGlueCode="false"
+  FetchMode="FETCH_AS_NEEDED"
+  FetchSize="20"
+  RowClass="model.VO.GradingTerryHeadersVORowImpl">
+  <DesignTime>
+    <Attr Name="_isExpertMode" Value="true"/>
+    <Attr Name="_isCodegen" Value="true"/>
+    <Attr Name="_codeGenFlag2" Value="Access"/>
+  </DesignTime>
+  <Properties>
+    <SchemaBasedProperties>
+      <LABEL
+        ResId="model.VO.GradingTerryHeadersVO_LABEL"/>
+    </SchemaBasedProperties>
+  </Properties>
+  <Variable
+    Name="p_job_id"
+    Kind="where"
+    Type="oracle.jbo.domain.Number">
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYHINT
+          Value="Hide"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Variable>
+  <Variable
+    Name="p_cust_po"
+    Kind="where"
+    Type="java.lang.String">
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYHINT
+          Value="Hide"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Variable>
+  <Variable
+    Name="p_sales_order"
+    Kind="where"
+    Type="java.lang.String">
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYHINT
+          Value="Hide"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Variable>
+  <Variable
+    Name="p_job_name"
+    Kind="viewcriteria"
+    Type="java.lang.String"/>
+  <ViewAccessor
+    Name="PwcOdmGradingCustPoNo1"
+    ViewObjectName="model.LOV.PwcOdmGradingCustPoNo">
+    <ParameterMap>
+      <PIMap Variable="p_order_no">
+        <TransientExpression><![CDATA[SalesOrderNumber]]></TransientExpression>
+      </PIMap>
+    </ParameterMap>
+  </ViewAccessor>
+  <ViewAccessor
+    Name="PwcOdmGradingJob1"
+    ViewObjectName="model.LOV.PwcOdmGradingJob">
+    <ParameterMap>
+      <PIMap Variable="p_cust_po_no">
+        <TransientExpression><![CDATA[CustPoNumber]]></TransientExpression>
+      </PIMap>
+      <PIMap Variable="p_sales_order">
+        <TransientExpression><![CDATA[SalesOrderNumber]]></TransientExpression>
+      </PIMap>
+    </ParameterMap>
+  </ViewAccessor>
+  <ViewAccessor
+    Name="PwcOdmGradingSalesOrderNoVO1"
+    ViewObjectName="model.LOV.PwcOdmGradingSalesOrderNoVO">
+    <ParameterMap>
+      <PIMap Variable="p_cust_po_no">
+        <TransientExpression><![CDATA[CustPoNumber]]></TransientExpression>
+      </PIMap>
+    </ParameterMap>
+  </ViewAccessor>
+  <ViewAccessor
+    Name="PwcOdmGradingJobSearch1"
+    ViewObjectName="model.LOV.PwcOdmGradingJobSearch">
+    <ParameterMap>
+      <PIMap Variable="p_cust_po">
+        <TransientExpression><![CDATA[CustPoNumber]]></TransientExpression>
+      </PIMap>
+      <PIMap Variable="p_sales_order">
+        <TransientExpression><![CDATA[SalesOrderNumber]]></TransientExpression>
+      </PIMap>
+    </ParameterMap>
+  </ViewAccessor>
+  <ListBinding
+    Name="LOV_CustPoNumber"
+    ListVOName="PwcOdmGradingCustPoNo1"
+    ListRangeSize="10"
+    NullValueFlag="none"
+    NullValueId="LOV_CustPoNumber_LOVUIHints_NullValueId"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="CustPoNumber"/>
+    </AttrArray>
+    <AttrArray Name="DerivedAttrNames">
+      <Item Value="SalesOrderNumber"/>
+    </AttrArray>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="CustPoNumber"/>
+      <Item Value="OrderNumber"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="CustPoNumber"/>
+      <Item Value="OrderNumber"/>
+      <Item Value="PartyName"/>
+    </AttrArray>
+    <DisplayCriteria
+      Hint="showAndExecute"
+      Name="PwcOdmGradingCustPoNoCriteria"/>
+  </ListBinding>
+  <ListBinding
+    Name="LOV_Job"
+    ListVOName="PwcOdmGradingJob1"
+    ListRangeSize="10"
+    NullValueFlag="none"
+    NullValueId="LOV_Job_LOVUIHints_NullValueId"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="Job"/>
+    </AttrArray>
+    <AttrArray Name="DerivedAttrNames">
+      <Item Value="JobId"/>
+      <Item Value="ItemId"/>
+      <Item Value="ItemDescription"/>
+      <Item Value="ItemCode"/>
+      <Item Value="JobQuantity"/>
+      <Item Value="StitchQuantity"/>
+      <Item Value="CustPoNumber"/>
+      <Item Value="SalesOrderNumber"/>
+    </AttrArray>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="WipEntityName"/>
+      <Item Value="WipEntityId"/>
+      <Item Value="ItemId"/>
+      <Item Value="Description"/>
+      <Item Value="ConcatenatedSegments"/>
+      <Item Value="JobQuantity"/>
+      <Item Value="StitchingQuantity"/>
+      <Item Value="CustPoNumber"/>
+      <Item Value="SalesOrderNumber"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="WipEntityName"/>
+      <Item Value="ConcatenatedSegments"/>
+      <Item Value="Description"/>
+    </AttrArray>
+    <DisplayCriteria
+      Name="PwcOdmGradingJobLovCriteria"
+      Hint="showAndExecute"/>
+  </ListBinding>
+  <ListBinding
+    Name="LOV_SalesOrderNumber"
+    ListVOName="PwcOdmGradingSalesOrderNoVO1"
+    ListRangeSize="10"
+    NullValueFlag="none"
+    NullValueId="LOV_SalesOrderNumber_LOVUIHints_NullValueId"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="SalesOrderNumber"/>
+    </AttrArray>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="OrderNumber"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="OrderNumber"/>
+      <Item Value="PartyName"/>
+    </AttrArray>
+    <DisplayCriteria
+      Hint="showAndExecute"
+      Name="PwcOdmGradingSalesOrderNoVOCriteria"/>
+  </ListBinding>
+  <ListBinding
+    Name="LOV_JobSearch1"
+    ListVOName="PwcOdmGradingJobSearch1"
+    ListRangeSize="10"
+    NullValueFlag="none"
+    NullValueId="LOV_JobSearch1_LOVUIHints_NullValueId"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="JobSearch1"/>
+    </AttrArray>
+    <AttrArray Name="DerivedAttrNames">
+      <Item Value="JobId"/>
+    </AttrArray>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="WipEntityName"/>
+      <Item Value="WipEntityId"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="WipEntityName"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
+  <SQLQuery>
+    <![CDATA[SELECT PwcOdmNGGradingHeadersEO.ATTRIBUTE1, 
+       PwcOdmNGGradingHeadersEO.ATTRIBUTE10, 
+       PwcOdmNGGradingHeadersEO.ATTRIBUTE11, 
+       PwcOdmNGGradingHeadersEO.ATTRIBUTE12, 
+       PwcOdmNGGradingHeadersEO.ATTRIBUTE13, 
+       PwcOdmNGGradingHeadersEO.ATTRIBUTE14, 
+       PwcOdmNGGradingHeadersEO.ATTRIBUTE15, 
+       PwcOdmNGGradingHeadersEO.ATTRIBUTE2, 
+       PwcOdmNGGradingHeadersEO.ATTRIBUTE3, 
+       PwcOdmNGGradingHeadersEO.ATTRIBUTE4, 
+       PwcOdmNGGradingHeadersEO.ATTRIBUTE5, 
+       PwcOdmNGGradingHeadersEO.ATTRIBUTE6, 
+       PwcOdmNGGradingHeadersEO.ATTRIBUTE7, 
+       PwcOdmNGGradingHeadersEO.ATTRIBUTE8, 
+       PwcOdmNGGradingHeadersEO.ATTRIBUTE9, 
+       PwcOdmNGGradingHeadersEO.CREATED_BY, 
+       PwcOdmNGGradingHeadersEO.CREATION_DATE, 
+       PwcOdmNGGradingHeadersEO.CUST_PO_NUMBER, 
+       PwcOdmNGGradingHeadersEO.GD_DATE, 
+       PwcOdmNGGradingHeadersEO.GD_ID, 
+       PwcOdmNGGradingHeadersEO.ITEM_CODE, 
+       PwcOdmNGGradingHeadersEO.ITEM_DESCRIPTION, 
+       PwcOdmNGGradingHeadersEO.ITEM_ID, 
+       PwcOdmNGGradingHeadersEO.JOB_ID, 
+       (SELECT start_quantity  
+        FROM WIP_DISCRETE_JOBS 
+        WHERE WIP_ENTITY_ID  = PwcOdmNGGradingHeadersEO.JOB_ID
+        ) JOB_QUANTITY, 
+       PwcOdmNGGradingHeadersEO.JOB, 
+       PwcOdmNGGradingHeadersEO.LAST_UPDATED_BY, 
+       PwcOdmNGGradingHeadersEO.LAST_UPDATED_DATE, 
+       PwcOdmNGGradingHeadersEO.LAST_UPDATED_LOGIN, 
+       PwcOdmNGGradingHeadersEO.MFG_ORG_ID, 
+       PwcOdmNGGradingHeadersEO.ORG_ID, 
+       PwcOdmNGGradingHeadersEO.SALES_ORDER_NUMBER, 
+       (SELECT SUM (DECODE (UPPER (mtt.transaction_type_name),
+                      'WIP COMPLETION', mmt.transaction_quantity,
+                      'WIP COMPLETION RETURN', mmt.transaction_quantity
+                     )
+                 ) stitch_quantity 
+from  wip_discrete_jobs wdj
+        ,wip_entities we
+        ,mtl_material_transactions mmt
+        ,mtl_transaction_types  mtt
+WHERE we.WIP_ENTITY_ID = wdj.WIP_ENTITY_ID
+and    mmt.TRANSACTION_SOURCE_ID = wdj.WIP_ENTITY_ID
+and    mmt.TRANSACTION_TYPE_ID = mtt.TRANSACTION_TYPE_ID
+and we.wip_entity_id = PwcOdmNGGradingHeadersEO.JOB_ID) STITCH_QUANTITY, 
+       PwcOdmNGGradingHeadersEO.JOB AS JOB_SEARCH1
+FROM PWC_ODM_GRADING_TERRY_HEADERS PwcOdmNGGradingHeadersEO
+where PwcOdmNGGradingHeadersEO.JOB_ID = nvl(:p_job_id,PwcOdmNGGradingHeadersEO.JOB_ID)
+and nvl(PwcOdmNGGradingHeadersEO.CUST_PO_NUMBER,'-1') = nvl(:p_cust_po,nvl(PwcOdmNGGradingHeadersEO.CUST_PO_NUMBER,'-1'))
+and nvl(PwcOdmNGGradingHeadersEO.SALES_ORDER_NUMBER,'-1') = nvl(:p_sales_order,nvl(PwcOdmNGGradingHeadersEO.SALES_ORDER_NUMBER,'-1'))]]>
+  </SQLQuery>
+  <EntityUsage
+    Name="PwcOdmNGGradingHeadersEO"
+    Entity="model.EO.PwcOdmNGGradingHeadersEO"/>
+  <ViewAttribute
+    Name="Attribute1"
+    PrecisionRule="true"
+    EntityAttrName="Attribute1"
+    EntityUsage="PwcOdmNGGradingHeadersEO"
+    AliasName="ATTRIBUTE1"/>
+  <ViewAttribute
+    Name="Attribute10"
+    PrecisionRule="true"
+    EntityAttrName="Attribute10"
+    EntityUsage="PwcOdmNGGradingHeadersEO"
+    AliasName="ATTRIBUTE10"/>
+  <ViewAttribute
+    Name="Attribute11"
+    PrecisionRule="true"
+    EntityAttrName="Attribute11"
+    EntityUsage="PwcOdmNGGradingHeadersEO"
+    AliasName="ATTRIBUTE11"/>
+  <ViewAttribute
+    Name="Attribute12"
+    PrecisionRule="true"
+    EntityAttrName="Attribute12"
+    EntityUsage="PwcOdmNGGradingHeadersEO"
+    AliasName="ATTRIBUTE12"/>
+  <ViewAttribute
+    Name="Attribute13"
+    PrecisionRule="true"
+    EntityAttrName="Attribute13"
+    EntityUsage="PwcOdmNGGradingHeadersEO"
+    AliasName="ATTRIBUTE13"/>
+  <ViewAttribute
+    Name="Attribute14"
+    PrecisionRule="true"
+    EntityAttrName="Attribute14"
+    EntityUsage="PwcOdmNGGradingHeadersEO"
+    AliasName="ATTRIBUTE14"/>
+  <ViewAttribute
+    Name="Attribute15"
+    PrecisionRule="true"
+    EntityAttrName="Attribute15"
+    EntityUsage="PwcOdmNGGradingHeadersEO"
+    AliasName="ATTRIBUTE15"/>
+  <ViewAttribute
+    Name="Attribute2"
+    PrecisionRule="true"
+    EntityAttrName="Attribute2"
+    EntityUsage="PwcOdmNGGradingHeadersEO"
+    AliasName="ATTRIBUTE2"/>
+  <ViewAttribute
+    Name="Attribute3"
+    PrecisionRule="true"
+    EntityAttrName="Attribute3"
+    EntityUsage="PwcOdmNGGradingHeadersEO"
+    AliasName="ATTRIBUTE3"/>
+  <ViewAttribute
+    Name="Attribute4"
+    PrecisionRule="true"
+    EntityAttrName="Attribute4"
+    EntityUsage="PwcOdmNGGradingHeadersEO"
+    AliasName="ATTRIBUTE4"/>
+  <ViewAttribute
+    Name="Attribute5"
+    PrecisionRule="true"
+    EntityAttrName="Attribute5"
+    EntityUsage="PwcOdmNGGradingHeadersEO"
+    AliasName="ATTRIBUTE5"/>
+  <ViewAttribute
+    Name="Attribute6"
+    PrecisionRule="true"
+    EntityAttrName="Attribute6"
+    EntityUsage="PwcOdmNGGradingHeadersEO"
+    AliasName="ATTRIBUTE6"/>
+  <ViewAttribute
+    Name="Attribute7"
+    PrecisionRule="true"
+    EntityAttrName="Attribute7"
+    EntityUsage="PwcOdmNGGradingHeadersEO"
+    AliasName="ATTRIBUTE7"/>
+  <ViewAttribute
+    Name="Attribute8"
+    PrecisionRule="true"
+    EntityAttrName="Attribute8"
+    EntityUsage="PwcOdmNGGradingHeadersEO"
+    AliasName="ATTRIBUTE8"/>
+  <ViewAttribute
+    Name="Attribute9"
+    PrecisionRule="true"
+    EntityAttrName="Attribute9"
+    EntityUsage="PwcOdmNGGradingHeadersEO"
+    AliasName="ATTRIBUTE9"/>
+  <ViewAttribute
+    Name="CreatedBy"
+    IsUpdateable="while_insert"
+    PrecisionRule="true"
+    EntityAttrName="CreatedBy"
+    EntityUsage="PwcOdmNGGradingHeadersEO"
+    AliasName="CREATED_BY"/>
+  <ViewAttribute
+    Name="CreationDate"
+    PrecisionRule="true"
+    EntityAttrName="CreationDate"
+    EntityUsage="PwcOdmNGGradingHeadersEO"
+    AliasName="CREATION_DATE"
+    IsUpdateable="while_insert"/>
+  <ViewAttribute
+    Name="CustPoNumber"
+    PrecisionRule="true"
+    EntityAttrName="CustPoNumber"
+    EntityUsage="PwcOdmNGGradingHeadersEO"
+    AliasName="CUST_PO_NUMBER"
+    LOVName="LOV_CustPoNumber">
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYWIDTH
+          Value="30"/>
+        <LABEL
+          ResId="model.VO.GradingTerryHeadersVO.CustPoNumber_LABEL"/>
+        <CONTROLTYPE
+          Value="input_text_lov"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="GdDate"
+    PrecisionRule="true"
+    EntityAttrName="GdDate"
+    EntityUsage="PwcOdmNGGradingHeadersEO"
+    AliasName="GD_DATE">
+    <DesignTime>
+      <Attr Name="_diagramName" Value="Date"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="GdId"
+    IsUpdateable="while_insert"
+    PrecisionRule="true"
+    EntityAttrName="GdId"
+    EntityUsage="PwcOdmNGGradingHeadersEO"
+    AliasName="GD_ID"/>
+  <ViewAttribute
+    Name="ItemCode"
+    PrecisionRule="true"
+    EntityAttrName="ItemCode"
+    EntityUsage="PwcOdmNGGradingHeadersEO"
+    AliasName="ITEM_CODE">
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYWIDTH
+          Value="30"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="ItemDescription"
+    PrecisionRule="true"
+    EntityAttrName="ItemDescription"
+    EntityUsage="PwcOdmNGGradingHeadersEO"
+    AliasName="ITEM_DESCRIPTION">
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYWIDTH
+          Value="30"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="ItemId"
+    PrecisionRule="true"
+    EntityAttrName="ItemId"
+    EntityUsage="PwcOdmNGGradingHeadersEO"
+    AliasName="ITEM_ID"/>
+  <ViewAttribute
+    Name="JobId"
+    PrecisionRule="true"
+    EntityAttrName="JobId"
+    EntityUsage="PwcOdmNGGradingHeadersEO"
+    AliasName="JOB_ID"/>
+  <ViewAttribute
+    Name="JobQuantity"
+    PrecisionRule="true"
+    EntityAttrName="JobQuantity"
+    EntityUsage="PwcOdmNGGradingHeadersEO"
+    AliasName="JOB_QUANTITY">
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYWIDTH
+          Value="30"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="Job"
+    PrecisionRule="true"
+    EntityAttrName="JobSearch"
+    EntityUsage="PwcOdmNGGradingHeadersEO"
+    AliasName="JOB"
+    LOVName="LOV_Job">
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYWIDTH
+          Value="30"/>
+        <CONTROLTYPE
+          Value="input_text_lov"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="LastUpdatedBy"
+    PrecisionRule="true"
+    EntityAttrName="LastUpdatedBy"
+    EntityUsage="PwcOdmNGGradingHeadersEO"
+    AliasName="LAST_UPDATED_BY"/>
+  <ViewAttribute
+    Name="LastUpdatedDate"
+    PrecisionRule="true"
+    EntityAttrName="LastUpdatedDate"
+    EntityUsage="PwcOdmNGGradingHeadersEO"
+    AliasName="LAST_UPDATED_DATE"/>
+  <ViewAttribute
+    Name="LastUpdatedLogin"
+    PrecisionRule="true"
+    EntityAttrName="LastUpdatedLogin"
+    EntityUsage="PwcOdmNGGradingHeadersEO"
+    AliasName="LAST_UPDATED_LOGIN"/>
+  <ViewAttribute
+    Name="MfgOrgId"
+    PrecisionRule="true"
+    EntityAttrName="MfgOrgId"
+    EntityUsage="PwcOdmNGGradingHeadersEO"
+    AliasName="MFG_ORG_ID"/>
+  <ViewAttribute
+    Name="OrgId"
+    PrecisionRule="true"
+    EntityAttrName="OrgId"
+    EntityUsage="PwcOdmNGGradingHeadersEO"
+    AliasName="ORG_ID"/>
+  <ViewAttribute
+    Name="SalesOrderNumber"
+    PrecisionRule="true"
+    EntityAttrName="SalesOrderNumber"
+    EntityUsage="PwcOdmNGGradingHeadersEO"
+    AliasName="SALES_ORDER_NUMBER"
+    LOVName="LOV_SalesOrderNumber">
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYWIDTH
+          Value="30"/>
+        <LABEL
+          ResId="model.VO.GradingTerryHeadersVO.SalesOrderNumber_LABEL"/>
+        <CONTROLTYPE
+          Value="input_text_lov"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="StitchQuantity"
+    PrecisionRule="true"
+    EntityAttrName="StitchQuantity"
+    EntityUsage="PwcOdmNGGradingHeadersEO"
+    AliasName="STITCH_QUANTITY">
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYWIDTH
+          Value="30"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="JobSearch1"
+    PrecisionRule="true"
+    EntityAttrName="JobSearch"
+    EntityUsage="PwcOdmNGGradingHeadersEO"
+    AliasName="JOB_SEARCH1"
+    LOVName="LOV_JobSearch1">
+    <DesignTime>
+      <Attr Name="_diagramName" Value="Job"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <CONTROLTYPE
+          Value="input_text_lov"/>
+        <LABEL
+          ResId="model.VO.GradingTerryHeadersVO.JobSearch1_LABEL"/>
+        <DISPLAYWIDTH
+          Value="30"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="SumTotalQuantity"
+    IsSelected="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="VIEW_ATTR"
+    SQLType="VARCHAR">
+    <TransientExpression><![CDATA[GradingTerryLinesVO.sum("TotalQuantityTransient")]]></TransientExpression>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="SumGradeA"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="VIEW_ATTR"
+    SQLType="VARCHAR"
+    IsSelected="false">
+    <TransientExpression><![CDATA[GradingTerryLinesVO.sum("Gradea")]]></TransientExpression>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="SumGradeB"
+    IsSelected="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="VIEW_ATTR"
+    SQLType="VARCHAR">
+    <TransientExpression><![CDATA[GradingTerryLinesVO.sum("Gradeb")]]></TransientExpression>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="SumGradec"
+    IsSelected="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="VIEW_ATTR"
+    SQLType="VARCHAR">
+    <TransientExpression><![CDATA[GradingTerryLinesVO.sum("Gradec")]]></TransientExpression>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="SumRewash"
+    IsSelected="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="VIEW_ATTR"
+    SQLType="VARCHAR">
+    <TransientExpression><![CDATA[GradingTerryLinesVO.sum("Rewash")]]></TransientExpression>
+  </ViewAttribute>
+  <ViewLinkAccessor
+    Name="GradingTerryLinesVO"
+    ViewLink="model.VL.GradingHeaderLinesVL"
+    Type="oracle.jbo.RowIterator"
+    IsUpdateable="false"/>
+  <ResourceBundle>
+    <PropertiesBundle
+      PropertiesFile="model.ModelBundle"/>
+  </ResourceBundle>
+</ViewObject>

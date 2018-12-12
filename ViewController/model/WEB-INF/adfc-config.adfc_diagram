@@ -1,0 +1,70 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<SDM>
+   <OverallProperties
+      id="OverallProperties1"/>
+   <View
+      id="View2">
+      <property
+         name="activityId">GradingTerry_CreatePG</property>
+      <property
+         name="page">/GradingTerry_CreatePG.jspx</property>
+      <property
+         name="description">&lt;html>&lt;p>&lt;b>GradingTerry_CreatePG&lt;/b>&lt;/p>&lt;p>Activity Type:  View&lt;/p></property>
+      <property
+         name="exceptionHandler">false</property>
+      <property
+         name="y">-48.405273</property>
+      <property
+         name="x">320.3584</property>
+   </View>
+   <View
+      id="View3">
+      <property
+         name="activityId">Test</property>
+      <property
+         name="page">/Test.jspx</property>
+      <property
+         name="description">&lt;html>&lt;p>&lt;b>Test&lt;/b>&lt;/p>&lt;p>Activity Type:  View&lt;/p></property>
+      <property
+         name="exceptionHandler">false</property>
+      <property
+         name="y">183.79883</property>
+      <property
+         name="x">412.5</property>
+   </View>
+   <View
+      id="View7">
+      <property
+         name="activityId">GradingTerry_SearchPG</property>
+      <property
+         name="page">/GradingTerry_SearchPG.jspx</property>
+      <property
+         name="description">&lt;html>&lt;p>&lt;b>GradingTerry_SearchPG&lt;/b>&lt;/p>&lt;p>Activity Type:  View&lt;/p></property>
+      <property
+         name="exceptionHandler">false</property>
+      <property
+         name="y">-53.70703</property>
+      <property
+         name="x">19.355469</property>
+   </View>
+   <ControlFlowCase
+      islink="true"
+      id="ControlFlowCase8"
+      from="View7"
+      to="View2">
+      <property
+         name="fromOutcome">Edit</property>
+      <property
+         name="sdm:polyPoints">R46,60.440205,-57.557617,279.3584,-52.25586,L46</property>
+   </ControlFlowCase>
+   <ControlFlowCase
+      islink="true"
+      id="ControlFlowCase9"
+      from="View2"
+      to="View7">
+      <property
+         name="fromOutcome">Search</property>
+      <property
+         name="sdm:polyPoints">L54,279.27368,-45.25586,60.35547,-50.557617,R54</property>
+   </ControlFlowCase>
+</SDM>
